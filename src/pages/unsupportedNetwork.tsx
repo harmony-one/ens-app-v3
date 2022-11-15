@@ -41,7 +41,7 @@ export default function Page() {
   const router = useRouter()
 
   useEffect(() => {
-    if (currentChain?.id === 5 || currentChain?.id === 1337 || currentChain?.id === 1666600000) {
+    if (currentChain?.id === 5 || currentChain?.id === 1337 || currentChain?.id === 1666600001) {
       router.push('/')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -49,7 +49,7 @@ export default function Page() {
 
   const handleChangeNetwork = () => {
     // switchNetwork?.(1337)
-    switchNetwork?.(1666600000)
+    switchNetwork?.(1666600001)
   }
 
   return (

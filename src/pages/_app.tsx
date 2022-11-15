@@ -121,11 +121,26 @@ const harmony: Chain = {
   testnet: false,
 }
 
+const harmonyShard1: Chain = {
+  id: 1666600001,
+  name: 'Harmony Shard 1',
+  network: 'harmony-s1',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'ONE',
+    symbol: 'ONE',
+  },
+  rpcUrls: {
+    default: 'https://s1.api.harmony.one',
+  },
+  testnet: false,
+}
+
 const { provider, chains } = configureChains(
   // [chain.goerli],
   // [chain.goerli, chain.localhost],
   // [localChain, chain.goerli],
-  [harmony],
+  [harmonyShard1, harmony],
   // [chain.localhost, chain.goerli],
   [
     ...(process.env.NEXT_PUBLIC_PROVIDER
