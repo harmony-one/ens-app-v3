@@ -15,6 +15,8 @@ export const networkName = {
   '1337': 'local',
   // eslint-disable-next-line @typescript-eslint/naming-convention
   '1666600000': 'harmony',
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  '1666600001': 'harmony-s1',
 }
 
 interface ResolverAddresses {

@@ -12,7 +12,7 @@ const baseMetadataURL = process.env.NEXT_METADATA_PROVIDER || 'http://localhost:
 export function imageUrlUnknownRecord(name: string, network: number) {
   const supported = getSupportedNetworkName(network)
 
-  return `${baseMetadataURL}/${supported}/avatar/${name}?timestamp=${Date.now()}`
+  return `${baseMetadataURL}/${supported}/${name}?timestamp=${Date.now()}`
 }
 
 export function ensNftImageUrl(name: string, network: number, regAddr: string) {
