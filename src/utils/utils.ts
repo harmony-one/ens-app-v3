@@ -6,13 +6,15 @@ export const getSupportedNetworkName = (networkId: number) =>
   networkName[`${networkId}` as keyof typeof networkName] || 'unknown'
 
 const baseMetadataURL = process.env.NEXT_METADATA_PROVIDER || 'http://localhost:8080'
+const baseAvatarURL = process.env.NEXT_PUBLIC_AVUP_ENDPOINT || 'http://localhost:8787'
 //  'https://metadata.ens.domains'
 
 // eslint-disable-next-line consistent-return
 export function imageUrlUnknownRecord(name: string, network: number) {
   const supported = getSupportedNetworkName(network)
 
-  return `${baseMetadataURL}/${supported}/${name}?timestamp=${Date.now()}`
+  // return `${baseMetadataURL}/${supported}/avatar/${name}?timestamp=${Date.now()}`
+  return `${baseAvatarURL}/${supported}/${name}?timestamp=${Date.now()}`
 }
 
 export function ensNftImageUrl(name: string, network: number, regAddr: string) {
