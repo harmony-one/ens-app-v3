@@ -8,6 +8,8 @@
 
 [Here](https://youtu.be/PObyJV0pWkw) is a video giving an overview for frontend developers to run a local environment using docker.
 
+Make sure you have docker running.
+
 Open two terminal windows.
 
 Start Docker (ganache, ens-subgraph, ens-contracts, ens-metadata-service)
@@ -20,6 +22,8 @@ Start the Frontend
 ```
 pnpm buildandstart:glocal
 ```
+
+View the frontend at http://localhost:3000/
 
 ## Prerequisites for ENS End to End Local Development
 

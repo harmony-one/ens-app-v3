@@ -4,7 +4,7 @@ The all new, all cool version of the ENS manager.
 
 ## Front end developers.
 
-For front end developement please see [Developer.md](./docs/Developer.md)
+For front end developement using docker please see [Developer.md](./docs/Developer.md)
 
 ## EXTERNAL CONTRIBUTOR NOTICE
 
