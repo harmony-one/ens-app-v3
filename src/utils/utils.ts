@@ -1,21 +1,29 @@
+import { toUtf8Bytes } from 'ethers/lib/utils'
+
 import { networkName } from './constants'
 
 export const getSupportedNetworkName = (networkId: number) =>
   networkName[`${networkId}` as keyof typeof networkName] || 'unknown'
 
-const baseMetadataURL = process.env.NEXT_PUBLIC_PROVIDER
-  ? 'http://localhost:8080'
-  : 'https://metadata.ens.domains'
+// const baseMetadataURL = process.env.NEXT_PUBLIC_PROVIDER
+//   ? 'http://localhost:8080'
+//   : 'https://metadata.ens.domains'
+
+const baseMetadataURL = process.env.NEXT_PUBLIC_METADATA_SERVICE || 'https://metadata.ens.domains'
+// const baseMetadataURL = process.env.NEXT_PUBLIC_AVUP_ENDPOINT || 'https://metadata.ens.domains'
 
 // eslint-disable-next-line consistent-return
 export function imageUrlUnknownRecord(name: string, network: number) {
   const supported = getSupportedNetworkName(network)
+  //   const supported = 'mainnet'
 
-  return `${baseMetadataURL}/${supported}/avatar/${name}?timestamp=${Date.now()}`
+  return `${baseMetadataURL}/${supported}/${name}?timestamp=${Date.now()}`
+  //   return `${baseMetadataURL}/${supported}/avatar/${name}?timestamp=${Date.now()}`
 }
 
 export function ensNftImageUrl(name: string, network: number, regAddr: string) {
   const supported = getSupportedNetworkName(network)
+  //   const supported = 'mainnet'
 
   return `${baseMetadataURL}/${supported}/${regAddr}/${name}/image`
 }
@@ -55,3 +63,8 @@ export const isDNSName = (name: string): boolean => {
 }
 
 export const isASubname = (name: string) => name.split('.').length > 2
+
+export const isLabelTooLong = (label: string) => {
+  const bytes = toUtf8Bytes(label)
+  return bytes.byteLength > 255
+}
