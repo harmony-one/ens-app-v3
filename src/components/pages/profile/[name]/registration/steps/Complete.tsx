@@ -12,6 +12,7 @@ import { Invoice } from '@app/components/@atoms/Invoice/Invoice'
 import MobileFullWidth from '@app/components/@atoms/MobileFullWidth'
 import NFTTemplate from '@app/components/@molecules/NFTTemplate/NFTTemplate'
 import { Card } from '@app/components/Card'
+import { ClaimWeb2Domain } from '@app/components/pages/profile/[name]/registration/steps/RegistrarRelay'
 import { useNameDetails } from '@app/hooks/useNameDetails'
 import useTransactionResponseReceipt from '@app/hooks/useTransactionResponseReceipt'
 import useWindowSize from '@app/hooks/useWindowSize'
@@ -119,6 +120,8 @@ const Complete = ({ nameDetails: { normalisedName: name }, callback }: Props) =>
   const commitTxFlow = getLatestTransaction(commitKey)
   const registerTxFlow = getLatestTransaction(registerKey)
 
+  console.log(name)
+
   const { data: commitReceipt, isLoading: commitLoading } = useWaitForTransaction({
     hash: commitTxFlow!.hash,
   })
@@ -185,19 +188,20 @@ const Complete = ({ nameDetails: { normalisedName: name }, callback }: Props) =>
         </SubtitleWithGradient>
       </TitleContainer>
       <Typography>{t('steps.complete.description')}</Typography>
-      {InvoiceFilled}
-      <ButtonContainer>
-        <MobileFullWidth>
-          <Button shadowless variant="secondary" onClick={() => callback(false)}>
-            {t('steps.complete.registerAnother')}
-          </Button>
-        </MobileFullWidth>
-        <MobileFullWidth>
-          <Button data-testid="view-name" shadowless onClick={() => callback(true)}>
-            {t('steps.complete.viewName')}
-          </Button>
-        </MobileFullWidth>
-      </ButtonContainer>
+      <ClaimWeb2Domain name={name} txHash={registerTxFlow?.hash || ''} />
+      {/* {InvoiceFilled} */}
+      {/* <ButtonContainer> */}
+      {/*  <MobileFullWidth> */}
+      {/*    <Button shadowless variant="secondary" onClick={() => callback(false)}> */}
+      {/*      {t('steps.complete.registerAnother')} */}
+      {/*    </Button> */}
+      {/*  </MobileFullWidth> */}
+      {/*  <MobileFullWidth> */}
+      {/*    <Button data-testid="view-name" shadowless onClick={() => callback(true)}> */}
+      {/*      {t('steps.complete.viewName')} */}
+      {/*    </Button> */}
+      {/*  </MobileFullWidth> */}
+      {/* </ButtonContainer> */}
     </StyledCard>
   )
 }
