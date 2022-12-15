@@ -11,8 +11,17 @@ if (process.env.NEXT_PUBLIC_PROVIDER && process.env.NEXT_PUBLIC_DEPLOYMENT_ADDRE
     ContractName | 'ENSRegistry',
     string
   >
-  opts.getContractAddress = () => (contractName) =>
-    deploymentAddresses[contractName === 'ENSRegistryWithFallback' ? 'ENSRegistry' : contractName]
+  opts.getContractAddress = () => (contractName) => {
+    // console.log(
+    //   contractName,
+    //   deploymentAddresses[
+    //     contractName === 'ENSRegistryWithFallback' ? 'ENSRegistry' : contractName
+    //   ],
+    // )
+    return deploymentAddresses[
+      contractName === 'ENSRegistryWithFallback' ? 'ENSRegistry' : contractName
+    ]
+  }
 }
 
 if (process.env.NEXT_PUBLIC_GRAPH_URI) {

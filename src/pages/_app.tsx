@@ -91,20 +91,20 @@ const breakpoints = {
   xl: '(min-width: 1280px)',
 }
 
-// const localChain: Chain = {
-//   id: 1337,
-//   name: 'Local 8545',
-//   network: 'localhost',
-//   nativeCurrency: {
-//     decimals: 18,
-//     name: 'LocalETH',
-//     symbol: 'ETH',
-//   },
-//   rpcUrls: {
-//     default: 'http://0.0.0.0:8545',
-//   },
-//   testnet: false,
-// }
+const localChain: Chain = {
+  id: 1337,
+  name: 'Local 8545',
+  network: 'localhost',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'LocalETH',
+    symbol: 'ETH',
+  },
+  rpcUrls: {
+    default: 'http://0.0.0.0:8545',
+  },
+  testnet: false,
+}
 
 const harmony: Chain = {
   id: 1666600000,
@@ -136,31 +136,28 @@ const harmonyShard1: Chain = {
   testnet: false,
 }
 
-const { provider, chains } = configureChains(
-  // [chain.goerli],
-  // [chain.goerli, chain.localhost],
-  // [localChain, chain.goerli],
-  [harmonyShard1, harmony],
-  // [chain.localhost, chain.goerli],
-  [
-    ...(process.env.NEXT_PUBLIC_PROVIDER
-      ? [
-          jsonRpcProvider({
-            rpc: () => ({ http: process.env.NEXT_PUBLIC_PROVIDER! }),
+const chainId = parseInt(process.env.NEXT_PUBLIC_CHAINID || '1337')
+
+const chainSelector = [localChain, harmony, harmonyShard1].filter((e) => e.id === chainId)
+
+const { provider, chains } = configureChains(chainSelector, [
+  ...(process.env.NEXT_PUBLIC_PROVIDER
+    ? [
+        jsonRpcProvider({
+          rpc: () => ({ http: process.env.NEXT_PUBLIC_PROVIDER! }),
+        }),
+      ]
+    : [
+        jsonRpcProvider({
+          rpc: (c) => ({
+            http: `https://web3.ens.domains/v1/${
+              c.network === 'homestead' ? 'mainnet' : c.network
+            }`,
           }),
-        ]
-      : [
-          jsonRpcProvider({
-            rpc: (c) => ({
-              http: `https://web3.ens.domains/v1/${
-                c.network === 'homestead' ? 'mainnet' : c.network
-              }`,
-            }),
-          }),
-          infuraProvider({ apiKey: '58a380d3ecd545b2b5b3dad5d2b18bf0' }),
-        ]),
-  ],
-)
+        }),
+        infuraProvider({ apiKey: '58a380d3ecd545b2b5b3dad5d2b18bf0' }),
+      ]),
+])
 
 const { connectors } = getDefaultWallets({
   appName: 'ENS',

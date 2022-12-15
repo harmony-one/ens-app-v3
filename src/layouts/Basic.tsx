@@ -9,6 +9,8 @@ import { Footer } from '@app/components/Footer'
 
 import { Navigation } from './Navigation'
 
+const chainId = parseInt(process.env.NEXT_PUBLIC_CHAINID || '1337')
+
 const Container = styled.div(
   ({ theme }) => css`
     padding: ${theme.space['5']} ${theme.space['4']};
@@ -54,10 +56,9 @@ export const Basic = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter()
 
   useEffect(() => {
-    if (currentChain && !(currentChain?.id === 5 || currentChain?.id === 1337 || currentChain?.id === 1666600001 )) {
+    if (currentChain && !(currentChain?.id === 5 || currentChain?.id === chainId)) {
       console.log(currentChain?.id)
-      // switchNetwork?.(1337)
-      switchNetwork?.(1666600001)
+      switchNetwork?.(chainId)
       router.push('/unsupportedNetwork')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
