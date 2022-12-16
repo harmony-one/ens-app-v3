@@ -31,8 +31,8 @@ export const NFTWithPlaceholder = ({
   network: number
 } & Omit<ComponentProps<'div'>, 'ref'>) => {
   const { avatar } = useAvatar(name, network)
-
-  const isCompatible = !!(name && name.split('.').length === 2 && name.endsWith('.eth'))
+  // CHANGE_TO_COUNTRY
+  const isCompatible = !!(name && name.split('.').length === 2 && name.endsWith('.country'))
 
   if (!isCompatible) return null
 

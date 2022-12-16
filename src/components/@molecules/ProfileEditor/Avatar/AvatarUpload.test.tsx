@@ -21,7 +21,8 @@ const props = {
   handleCancel: mockHandleCancel,
   handleSubmit: mockHandleSubmit,
   avatar: mockFile,
-  name: 'test.eth',
+  // CHANGE_TO_COUNTRY
+  name: 'test.country',
 }
 
 describe('<AvatarUpload />', () => {
@@ -72,7 +73,7 @@ describe('<AvatarUpload />', () => {
     fireEvent.click(screen.getByTestId('upload-button'))
     await waitFor(() =>
       expect(global.fetch).toBeCalledWith(
-        'https://avatar-upload.ens-cf.workers.dev/mainnet/test.eth',
+        'https://avatar-upload.ens-cf.workers.dev/mainnet/test.country',
         {
           method: 'PUT',
           headers: {

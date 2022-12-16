@@ -27,7 +27,11 @@ describe('EditResolver', () => {
     mockUseProvider.mockReturnValue({})
     mockUseNetwork.mockReturnValue({ chain: { id: 1 } })
     render(
-      <EditResolver data={{ name: 'user1.eth' }} dispatch={mockDispatch} onDismiss={() => {}} />,
+      <EditResolver
+        data={{ name: 'user1.country' }}
+        dispatch={mockDispatch}
+        onDismiss={() => {}}
+      />,
     )
 
     const latestRadio = await getLatestRadio()
@@ -60,7 +64,11 @@ describe('EditResolver', () => {
 
     it('should allow user to update if the have chosen to use the latest resolver', async () => {
       render(
-        <EditResolver data={{ name: 'user1.eth' }} dispatch={mockDispatch} onDismiss={() => {}} />,
+        <EditResolver
+          data={{ name: 'user1.country' }}
+          dispatch={mockDispatch}
+          onDismiss={() => {}}
+        />,
       )
       const saveBtn = await screen.findByText('action.update')
       fireEvent.click(saveBtn)
@@ -74,7 +82,7 @@ describe('EditResolver', () => {
         name: 'updateResolver',
         data: {
           contract: 'registry',
-          name: 'user1.eth',
+          name: 'user1.country',
           oldResolver: RESOLVER_ADDRESSES['1'][2],
           resolver: RESOLVER_ADDRESSES['1'][0],
         },
@@ -83,7 +91,11 @@ describe('EditResolver', () => {
 
     it('should NOT allow the user to update if they have chosen a custom resolver and have not provided a valid address', async () => {
       render(
-        <EditResolver data={{ name: 'user1.eth' }} dispatch={mockDispatch} onDismiss={() => {}} />,
+        <EditResolver
+          data={{ name: 'user1.country' }}
+          dispatch={mockDispatch}
+          onDismiss={() => {}}
+        />,
       )
 
       const customRadio = await getCustomRadio()
@@ -106,7 +118,11 @@ describe('EditResolver', () => {
 
     it('should NOT allow the user to update if they have chosen a custom resolver and have not provided a valid address', async () => {
       render(
-        <EditResolver data={{ name: 'user1.eth' }} dispatch={mockDispatch} onDismiss={() => {}} />,
+        <EditResolver
+          data={{ name: 'user1.country' }}
+          dispatch={mockDispatch}
+          onDismiss={() => {}}
+        />,
       )
 
       const customRadio = await getCustomRadio()
@@ -129,7 +145,11 @@ describe('EditResolver', () => {
 
     it('should allow the user to update if they have chosen a custom resolver and HAVE provided a valid address', async () => {
       render(
-        <EditResolver data={{ name: 'user1.eth' }} dispatch={mockDispatch} onDismiss={() => {}} />,
+        <EditResolver
+          data={{ name: 'user1.country' }}
+          dispatch={mockDispatch}
+          onDismiss={() => {}}
+        />,
       )
 
       const customRadio = await getCustomRadio()
@@ -152,7 +172,7 @@ describe('EditResolver', () => {
         name: 'updateResolver',
         data: {
           contract: 'registry',
-          name: 'user1.eth',
+          name: 'user1.country',
           oldResolver: RESOLVER_ADDRESSES['1'][2],
           resolver: RESOLVER_ADDRESSES['1'][1],
         },
@@ -172,7 +192,11 @@ describe('EditResolver', () => {
 
     it('should disable the latest resolver button', async () => {
       render(
-        <EditResolver data={{ name: 'user1.eth' }} dispatch={mockDispatch} onDismiss={() => {}} />,
+        <EditResolver
+          data={{ name: 'user1.country' }}
+          dispatch={mockDispatch}
+          onDismiss={() => {}}
+        />,
       )
       const latestRadio = await getLatestRadio()
       await waitFor(() => {
@@ -183,7 +207,11 @@ describe('EditResolver', () => {
 
     it('should have custom radio option checked', async () => {
       render(
-        <EditResolver data={{ name: 'user1.eth' }} dispatch={mockDispatch} onDismiss={() => {}} />,
+        <EditResolver
+          data={{ name: 'user1.country' }}
+          dispatch={mockDispatch}
+          onDismiss={() => {}}
+        />,
       )
 
       const customRadio = await getCustomRadio()

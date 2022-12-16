@@ -11,15 +11,16 @@ const mockUseEns = mockFunction(useEns)
 const mockGetNames = jest.fn()
 
 const makeNameItem = (isSubname: boolean) => (_: any, index: number) => {
+  // CHANGE_TO_COUNTRY
   const base = {
     id: index,
     labelName: String(index),
     truncatedName: String(index),
     labelhash: '0x123',
     isMigrated: true,
-    name: `${index}.eth`,
+    name: `${index}.country`,
     parent: {
-      name: 'eth',
+      name: 'country', // eth
     },
     type: 'domain',
   }

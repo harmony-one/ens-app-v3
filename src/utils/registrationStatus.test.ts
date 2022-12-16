@@ -17,8 +17,8 @@ describe('addRegistrationStatustoBatch', () => {
       },
     })
     const ens = useEns()
-    addRegistrationStatusToBatch(ens, 'sub1.wrapped.eth')
-    expect(mockBatch).toHaveBeenCalledWith('sub1.wrapped.eth')
+    addRegistrationStatusToBatch(ens, 'sub1.wrapped.country')
+    expect(mockBatch).toHaveBeenCalledWith('sub1.wrapped.country')
     expect(mockBatch.mock.calls[0].length).toEqual(1)
   })
 })

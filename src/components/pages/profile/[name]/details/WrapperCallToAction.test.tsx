@@ -74,12 +74,12 @@ describe('WrapperCallToAction', () => {
 
   it('should render', () => {
     mockResumeTransactionFlow.mockReturnValue(0)
-    render(<WrapperCallToAction name="test123.eth" />)
+    render(<WrapperCallToAction name="test123.country" />)
     expect(screen.getByTestId('wrapper-cta-container')).toBeVisible()
     expect(screen.getByTestId('wrapper-cta-button')).toHaveTextContent('details.wrap.startLabel')
   })
   it('should set the current transaction on click', () => {
-    render(<WrapperCallToAction name="test123.eth" />)
+    render(<WrapperCallToAction name="test123.country" />)
     screen.getByTestId('wrapper-cta-button').click()
     expect(mockCreateTransactionFlow).toHaveBeenCalled()
   })
@@ -102,18 +102,18 @@ describe('WrapperCallToAction', () => {
       },
       isLoading: false,
     })
-    render(<WrapperCallToAction name="test123.eth" />)
+    render(<WrapperCallToAction name="test123.country" />)
     screen.getByTestId('wrapper-cta-button').click()
     const args = mockCreateTransactionFlow.mock.lastCall
 
-    expect(args[0]).toBe('wrapName-test123.eth')
+    expect(args[0]).toBe('wrapName-test123.country')
     expect(args[1].transactions[0].name).toEqual('migrateProfile')
-    expect(args[1].transactions[0].data).toEqual({ name: 'test123.eth' })
+    expect(args[1].transactions[0].data).toEqual({ name: 'test123.country' })
     expect(args[1].transactions[1].name).toEqual('wrapName')
-    expect(args[1].transactions[1].data).toEqual({ name: 'test123.eth' })
+    expect(args[1].transactions[1].data).toEqual({ name: 'test123.country' })
   })
 
-  it('should create a transaction flow for a .eth 2LD with no profile', () => {
+  it('should create a transaction flow for a .country 2LD with no profile', () => {
     mockUseNameDetails.mockReturnValue({
       ownerData: { owner: '0x123' },
       profile: {
@@ -122,15 +122,15 @@ describe('WrapperCallToAction', () => {
       },
       isLoading: false,
     })
-    render(<WrapperCallToAction name="test123.eth" />)
+    render(<WrapperCallToAction name="test123.country" />)
     screen.getByTestId('wrapper-cta-button').click()
     const args = mockCreateTransactionFlow.mock.lastCall
 
-    expect(args[0]).toBe('wrapName-test123.eth')
+    expect(args[0]).toBe('wrapName-test123.country')
     expect(args[1].transactions[0].name).toEqual('wrapName')
-    expect(args[1].transactions[0].data).toEqual({ name: 'test123.eth' })
+    expect(args[1].transactions[0].data).toEqual({ name: 'test123.country' })
   })
-  it('should create a transaction flow for a .eth 2LD with a profile and a different owner', () => {
+  it('should create a transaction flow for a .country 2LD with a profile and a different owner', () => {
     mockUseNameDetails.mockReturnValue({
       ownerData: { owner: '0x124' },
       profile: {
@@ -148,15 +148,18 @@ describe('WrapperCallToAction', () => {
       },
       isLoading: false,
     })
-    render(<WrapperCallToAction name="test123.eth" />)
+    render(<WrapperCallToAction name="test123.country" />)
     screen.getByTestId('wrapper-cta-button').click()
     const args = mockCreateTransactionFlow.mock.lastCall
 
-    expect(args[0]).toBe('wrapName-test123.eth')
+    expect(args[0]).toBe('wrapName-test123.country')
     expect(args[1].transactions[0].name).toEqual('wrapName')
-    expect(args[1].transactions[0].data).toEqual({ name: 'test123.eth' })
+    expect(args[1].transactions[0].data).toEqual({ name: 'test123.country' })
     expect(args[1].transactions[1].name).toEqual('migrateProfile')
-    expect(args[1].transactions[1].data).toEqual({ name: 'test123.eth', resolverAddress: '0x456' })
+    expect(args[1].transactions[1].data).toEqual({
+      name: 'test123.country',
+      resolverAddress: '0x456',
+    })
   })
 
   it('should create a transaction flow for a subname with no registry approval', () => {
@@ -172,15 +175,15 @@ describe('WrapperCallToAction', () => {
       approvedForAll: false,
       isLoading: false,
     })
-    render(<WrapperCallToAction name="sub.test123.eth" />)
+    render(<WrapperCallToAction name="sub.test123.country" />)
     screen.getByTestId('wrapper-cta-button').click()
     const args = mockCreateTransactionFlow.mock.lastCall
 
-    expect(args[0]).toBe('wrapName-sub.test123.eth')
+    expect(args[0]).toBe('wrapName-sub.test123.country')
     expect(args[1].transactions[0].name).toEqual('approveNameWrapper')
     expect(args[1].transactions[0].data).toEqual({ address: '0x123' })
     expect(args[1].transactions[1].name).toEqual('wrapName')
-    expect(args[1].transactions[1].data).toEqual({ name: 'sub.test123.eth' })
+    expect(args[1].transactions[1].data).toEqual({ name: 'sub.test123.country' })
   })
   it('should create a transaction flow for a subname with existing registry approval', () => {
     mockUseNameDetails.mockReturnValue({
@@ -195,13 +198,13 @@ describe('WrapperCallToAction', () => {
       approvedForAll: true,
       isLoading: false,
     })
-    render(<WrapperCallToAction name="sub.test123.eth" />)
+    render(<WrapperCallToAction name="sub.test123.country" />)
     screen.getByTestId('wrapper-cta-button').click()
     const args = mockCreateTransactionFlow.mock.lastCall
 
-    expect(args[0]).toBe('wrapName-sub.test123.eth')
+    expect(args[0]).toBe('wrapName-sub.test123.country')
     expect(args[1].transactions[0].name).toEqual('wrapName')
-    expect(args[1].transactions[0].data).toEqual({ name: 'sub.test123.eth' })
+    expect(args[1].transactions[0].data).toEqual({ name: 'sub.test123.country' })
   })
   it('should create a transaction flow for a subname with a profile', () => {
     mockUseNameDetails.mockReturnValue({
@@ -221,20 +224,20 @@ describe('WrapperCallToAction', () => {
       },
       isLoading: false,
     })
-    render(<WrapperCallToAction name="sub.test123.eth" />)
+    render(<WrapperCallToAction name="sub.test123.country" />)
     screen.getByTestId('wrapper-cta-button').click()
     const args = mockCreateTransactionFlow.mock.lastCall
 
-    expect(args[0]).toBe('wrapName-sub.test123.eth')
+    expect(args[0]).toBe('wrapName-sub.test123.country')
     expect(args[1].transactions[0].name).toEqual('migrateProfile')
-    expect(args[1].transactions[0].data).toEqual({ name: 'sub.test123.eth' })
+    expect(args[1].transactions[0].data).toEqual({ name: 'sub.test123.country' })
     expect(args[1].transactions[1].name).toEqual('wrapName')
-    expect(args[1].transactions[1].data).toEqual({ name: 'sub.test123.eth' })
+    expect(args[1].transactions[1].data).toEqual({ name: 'sub.test123.country' })
   })
 
   it('should show button as resumable if step is greater than 0', () => {
     mockGetResumeable.mockReturnValue(1)
-    render(<WrapperCallToAction name="test123.eth" />)
+    render(<WrapperCallToAction name="test123.country" />)
     expect(screen.getByTestId('wrapper-cta-button')).toHaveTextContent('details.wrap.resumeLabel')
   })
 })

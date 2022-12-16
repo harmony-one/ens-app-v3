@@ -22,7 +22,7 @@ const mockForNoPrimary = () =>
 
 const mockForPrimary = () =>
   mockUsePrimary.mockReturnValue({
-    name: 'nick.eth',
+    name: 'nick.country',
     loading: false,
     status: 'success',
   })
@@ -65,7 +65,7 @@ describe('OwnerButton', () => {
     it('should show primary name if available', () => {
       mockForPrimary()
       render(<OwnerButton {...dialogMockData} />)
-      expect(screen.getByText('nick.eth')).toBeVisible()
+      expect(screen.getByText('nick.country')).toBeVisible()
     })
     it('should show address if no primary name is available', () => {
       mockForNoPrimary()
@@ -102,7 +102,7 @@ describe('OwnerButton', () => {
     it('should show primary name if available', () => {
       mockForPrimary()
       render(<OwnerButton {...dropdownMockData} />)
-      expect(screen.getByText('nick.eth')).toBeVisible()
+      expect(screen.getByText('nick.country')).toBeVisible()
     })
     it('should show address if no primary name is available', () => {
       mockForNoPrimary()

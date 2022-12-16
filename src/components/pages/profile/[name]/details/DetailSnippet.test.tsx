@@ -17,7 +17,7 @@ const mockUseProfileActions = mockFunction(useProfileActions)
 describe('DetailSnippet', () => {
   const mockRouterObject = {
     query: {
-      name: 'nick.eth',
+      name: 'nick.country',
     },
   }
   mockUseAccount.mockReturnValue({ address: '0x123' })
@@ -29,7 +29,7 @@ describe('DetailSnippet', () => {
     const mockData = {
       expiryDate: new Date(1654782805000),
       canSend: false,
-      name: 'nick.eth',
+      name: 'nick.country',
     }
     mockUseRouter.mockReturnValue(mockRouterObject)
     render(<DetailSnippet {...mockData} />)

@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios'
 import { useCallback, useEffect, useState } from 'react'
 import { useAccount } from 'wagmi'
 
 import { Button, Field, Heading, Spinner, Typography } from '@ensdomains/thorin'
 
-const TLD = process.env.NEXT_PUBLIC_TLD || 'eth'
+// CHANGE_TO_COUNTRY
+const TLD = process.env.NEXT_PUBLIC_TLD || 'country' // eth
 
 const base = axios.create({
   baseURL: process.env.NEXT_PUBLIC_REGISTRAR_RELAYER,

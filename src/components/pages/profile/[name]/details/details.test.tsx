@@ -45,7 +45,7 @@ type DetailsProps = ComponentProps<typeof Details>
 describe('Details', () => {
   const mockRouterObject = {
     query: {
-      name: 'nick.eth',
+      name: 'nick.country',
     },
   }
 
@@ -64,7 +64,7 @@ describe('Details', () => {
       owner: '0xowner',
       ownershipLevel: 'nameWrapper',
     },
-    normalisedName: 'nick.eth',
+    normalisedName: 'nick.country',
     chainId: 1,
     selfAbilities: {
       canEdit: true,

@@ -20,7 +20,8 @@ mockShortExpiry.mockImplementation(({ expiry }) => <div>{expiry}</div>)
 describe('NameDetailitem', () => {
   const mockRouterObject = {
     query: {
-      name: 'nick.eth',
+      // CHANGE_TO_COUNTRY
+      name: 'nick.country',
     },
   }
 

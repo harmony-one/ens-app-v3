@@ -35,7 +35,7 @@ describe('Fuses', () => {
   it('should render', () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({})
@@ -46,7 +46,7 @@ describe('Fuses', () => {
   it('should show fuses if wrapped name', () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({ wrapperData: mockFusesResponse })
@@ -59,7 +59,7 @@ describe('Fuses', () => {
   it('should show warning if PCC has NOT been burned', () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({

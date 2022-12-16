@@ -4,7 +4,7 @@ import { RecordsTab } from './RecordsTab'
 
 describe('RecordsTab', () => {
   const baseMockData = {
-    name: 'nick.eth',
+    name: 'nick.country',
     network: 1,
   }
 

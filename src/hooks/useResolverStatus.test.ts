@@ -1,8 +1,9 @@
 import { mockFunction, renderHook } from '@app/test-utils'
-import { useProfile } from './useProfile'
-import { useResolverStatus } from './useResolverStatus'
+
 import { useEns } from '../utils/EnsProvider'
 import { useContractAddress } from './useContractAddress'
+import { useProfile } from './useProfile'
+import { useResolverStatus } from './useResolverStatus'
 
 jest.mock('@app/utils/EnsProvider')
 jest.mock('@app/hooks/useContractAddress')
@@ -79,7 +80,7 @@ describe('useResolverStatus', () => {
       },
     })
 
-    const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.eth'))
+    const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.country'))
     await waitForNextUpdate()
     expect(result.current).toEqual({
       status: {
@@ -100,7 +101,7 @@ describe('useResolverStatus', () => {
       },
     })
 
-    const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.eth'))
+    const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.country'))
     await waitForNextUpdate()
     expect(result.current).toEqual({
       status: {
@@ -116,8 +117,9 @@ describe('useResolverStatus', () => {
   describe('when profile does NOT have the latest resolver', () => {
     it('should return hasLatestResolver is false', async () => {
       setup()
+      // CHANGE_TO_COUNTRY
       const { result, waitForNextUpdate } = renderHook(() =>
-        useResolverStatus('another_resolver.eth'),
+        useResolverStatus('another_resolver.country'),
       )
       await waitForNextUpdate()
       expect(result.current).toEqual({
@@ -135,7 +137,7 @@ describe('useResolverStatus', () => {
       setup({
         getProfile: undefined,
       })
-      const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.eth'))
+      const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.country'))
       await waitForNextUpdate()
       expect(result.current).toEqual({
         status: {
@@ -154,7 +156,7 @@ describe('useResolverStatus', () => {
           records: {},
         },
       })
-      const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.eth'))
+      const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.country'))
       await waitForNextUpdate()
       expect(result.current).toEqual({
         status: {
@@ -180,7 +182,7 @@ describe('useResolverStatus', () => {
           },
         },
       })
-      const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.eth'))
+      const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.country'))
       await waitForNextUpdate()
       expect(result.current).toEqual({
         status: {
@@ -197,7 +199,7 @@ describe('useResolverStatus', () => {
       setup({
         getProfile: defaultProfile,
       })
-      const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.eth'))
+      const { result, waitForNextUpdate } = renderHook(() => useResolverStatus('test.country'))
       await waitForNextUpdate()
       expect(result.current).toEqual({
         status: {
@@ -217,7 +219,7 @@ describe('useResolverStatus', () => {
         getProfile: defaultProfile,
       })
       const { result, waitForNextUpdate } = renderHook(() =>
-        useResolverStatus('test.eth', false, { skipCompare: true }),
+        useResolverStatus('test.country', false, { skipCompare: true }),
       )
       await waitForNextUpdate()
       expect(result.current).toEqual({
@@ -237,7 +239,7 @@ describe('useResolverStatus', () => {
       getProfile: defaultProfile,
     })
     const { result, waitForNextUpdate } = renderHook(() =>
-      useResolverStatus('test.eth', false, { skipCompare: false }),
+      useResolverStatus('test.country', false, { skipCompare: false }),
     )
     await waitForNextUpdate()
     expect(result.current).toEqual({
