@@ -146,7 +146,7 @@ describe('AdvancedEditor', () => {
 
   it('should render', async () => {
     render(
-      <AdvancedEditor dispatch={mockDispatch} onDismiss={() => {}} data={{ name: 'test.eth' }} />,
+      <AdvancedEditor dispatch={mockDispatch} onDismiss={() => {}} data={{ name: 'test.country' }} />,
     )
     await waitFor(() => {
       expect(screen.getByTestId('advanced-editor')).toBeVisible()
@@ -155,7 +155,7 @@ describe('AdvancedEditor', () => {
 
   it('should submit key with empty string in an existing text record is deleted', async () => {
     render(
-      <AdvancedEditor dispatch={mockDispatch} onDismiss={() => {}} data={{ name: 'test.eth' }} />,
+      <AdvancedEditor dispatch={mockDispatch} onDismiss={() => {}} data={{ name: 'test.country' }} />,
     )
 
     const avatarInput = await screen.findByTestId('record-input-avatar')
@@ -180,7 +180,7 @@ describe('AdvancedEditor', () => {
 
   it('should submit key/value when new text is added', async () => {
     render(
-      <AdvancedEditor dispatch={mockDispatch} onDismiss={() => {}} data={{ name: 'test.eth' }} />,
+      <AdvancedEditor dispatch={mockDispatch} onDismiss={() => {}} data={{ name: 'test.country' }} />,
     )
     const addButton = await screen.findByTestId('add-record-button')
     const addInput = within(addButton).getByTestId('add-record-button-input')
@@ -209,7 +209,7 @@ describe('AdvancedEditor', () => {
 
   it('should submit key with empty string in an existing address record is deleted', async () => {
     render(
-      <AdvancedEditor dispatch={mockDispatch} onDismiss={() => {}} data={{ name: 'test.eth' }} />,
+      <AdvancedEditor dispatch={mockDispatch} onDismiss={() => {}} data={{ name: 'test.country' }} />,
     )
     const tab = await screen.findByTestId('address-tab')
     fireEvent.click(tab)
@@ -236,7 +236,7 @@ describe('AdvancedEditor', () => {
 
   it('should submit key/value when new address is added', async () => {
     render(
-      <AdvancedEditor dispatch={mockDispatch} onDismiss={() => {}} data={{ name: 'test.eth' }} />,
+      <AdvancedEditor dispatch={mockDispatch} onDismiss={() => {}} data={{ name: 'test.country' }} />,
     )
 
     const tab = await screen.findByTestId('address-tab')

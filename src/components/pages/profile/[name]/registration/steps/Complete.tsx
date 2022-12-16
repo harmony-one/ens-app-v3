@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BigNumber } from 'ethers'
 import dynamic from 'next/dynamic'
 import { useMemo } from 'react'
@@ -6,10 +7,11 @@ import { useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
 import { useAccount, useWaitForTransaction } from 'wagmi'
 
-import { Button, Typography, mq } from '@ensdomains/thorin'
+import { Typography, mq } from '@ensdomains/thorin'
 
+// import { Button, Typography, mq } from '@ensdomains/thorin'
 import { Invoice } from '@app/components/@atoms/Invoice/Invoice'
-import MobileFullWidth from '@app/components/@atoms/MobileFullWidth'
+// import MobileFullWidth from '@app/components/@atoms/MobileFullWidth'
 import NFTTemplate from '@app/components/@molecules/NFTTemplate/NFTTemplate'
 import { Card } from '@app/components/Card'
 import { ClaimWeb2Domain } from '@app/components/pages/profile/[name]/registration/steps/RegistrarRelay'
@@ -37,16 +39,16 @@ const StyledCard = styled(Card)(
   `,
 )
 
-const ButtonContainer = styled.div(
-  ({ theme }) => css`
-    width: ${theme.space.full};
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: ${theme.space['2']};
-  `,
-)
+// const ButtonContainer = styled.div(
+//   ({ theme }) => css`
+//     width: ${theme.space.full};
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: center;
+//     gap: ${theme.space['2']};
+//   `,
+// )
 
 const NFTContainer = styled.div(
   ({ theme }) => css`

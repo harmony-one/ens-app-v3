@@ -22,15 +22,15 @@ const mockRequestWithNames = () =>
   mockRequest.mockResolvedValue({
     domains: [
       {
-        name: 'test.eth',
+        name: 'test.country',
         id: '0x0',
       },
       {
-        name: 'test2.eth',
+        name: 'test2.country',
         id: '0x1',
       },
       {
-        name: 'test3.eth',
+        name: 'test3.country',
         id: '0x2',
       },
     ],
@@ -94,44 +94,44 @@ describe('SelectPrimaryName', () => {
     mockRequestWithNames()
     renderHelper({})
     await waitFor(() => {
-      expect(screen.getByText('test.eth')).toBeInTheDocument()
-      expect(screen.getByText('test2.eth')).toBeInTheDocument()
-      expect(screen.getByText('test3.eth')).toBeInTheDocument()
+      expect(screen.getByText('test.country')).toBeInTheDocument()
+      expect(screen.getByText('test2.country')).toBeInTheDocument()
+      expect(screen.getByText('test3.country')).toBeInTheDocument()
     })
   })
   it('should only enable next button if name selected', async () => {
     mockRequestWithNames()
     renderHelper({})
     await waitFor(() => {
-      expect(screen.getByText('test.eth')).toBeInTheDocument()
-      expect(screen.getByText('test2.eth')).toBeInTheDocument()
-      expect(screen.getByText('test3.eth')).toBeInTheDocument()
+      expect(screen.getByText('test.country')).toBeInTheDocument()
+      expect(screen.getByText('test2.country')).toBeInTheDocument()
+      expect(screen.getByText('test3.country')).toBeInTheDocument()
     })
     expect(screen.getByTestId('primary-next')).toBeDisabled()
-    fireEvent.click(screen.getByText('test.eth'))
+    fireEvent.click(screen.getByText('test.country'))
     expect(screen.getByTestId('primary-next')).not.toBeDisabled()
   })
   it('should filter out existing primary name for selection', async () => {
     mockRequestWithNames()
-    renderHelper({ existingPrimary: 'test.eth' })
+    renderHelper({ existingPrimary: 'test.country' })
     await waitFor(() => {
-      expect(screen.queryByText('test.eth')).not.toBeInTheDocument()
-      expect(screen.getByText('test2.eth')).toBeInTheDocument()
-      expect(screen.getByText('test3.eth')).toBeInTheDocument()
+      expect(screen.queryByText('test.country')).not.toBeInTheDocument()
+      expect(screen.getByText('test2.country')).toBeInTheDocument()
+      expect(screen.getByText('test3.country')).toBeInTheDocument()
     })
   })
   it('should truncate encoded names', async () => {
     mockRequest.mockResolvedValue({
       domains: [
         {
-          name: '[2fcba40a1a605acf57a88f10820dd7f474036e9c73660ce1bafdbb9004b92ded].eth',
+          name: '[2fcba40a1a605acf57a88f10820dd7f474036e9c73660ce1bafdbb9004b92ded].country',
           id: '0x0',
         },
       ],
     })
     renderHelper({})
     await waitFor(() => {
-      expect(screen.getByText('[2fc...ded].eth')).toBeInTheDocument()
+      expect(screen.getByText('[2fc...ded].country')).toBeInTheDocument()
     })
   })
 })

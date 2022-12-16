@@ -89,7 +89,7 @@ describe('SearchInput', () => {
       [
         {
           type: 'name',
-          value: 'nick.eth',
+          value: 'nick.country',
         },
         {
           type: 'address',
@@ -97,7 +97,7 @@ describe('SearchInput', () => {
         },
         {
           type: 'name',
-          value: 'test.eth',
+          value: 'test.country',
         },
       ],
     ])
@@ -116,8 +116,8 @@ describe('SearchInput', () => {
       timeout: 500,
     })
 
-    expect(screen.getByText('nick.eth')).toBeInTheDocument()
+    expect(screen.getByText('nick.country')).toBeInTheDocument()
     expect(screen.getByText('0xb6E040...d28cd9')).toBeInTheDocument()
-    expect(screen.getByText('test.eth')).toBeInTheDocument()
+    expect(screen.getByText('test.country')).toBeInTheDocument()
   })
 })

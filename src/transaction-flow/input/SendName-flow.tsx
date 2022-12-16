@@ -348,7 +348,8 @@ export const SendName = ({ data, dispatch, onDismiss }: Props) => {
       const result = await getRecords(sendNameWatch)
       return result?.address
     },
-    { enabled: sendNameWatch?.includes('.eth') },
+    // CHANGE_TO_COUNTRY
+    { enabled: sendNameWatch?.includes('.country') },
   )
 
   const { name: primaryName } = usePrimary(ethNameValidation || sendNameWatch)
@@ -462,6 +463,7 @@ export const SendName = ({ data, dispatch, onDismiss }: Props) => {
         </SwitchBox>
       )}
       <InnerContainer>
+        {/* CHANGE_TO_COUNTRY */}
         <form data-testid="edit-resolver-form" ref={formRef}>
           <Input
             data-testid="send-name-input"
@@ -470,11 +472,11 @@ export const SendName = ({ data, dispatch, onDismiss }: Props) => {
             {...register('sendName', {
               validate: {
                 length: (value) =>
-                  !value.includes('.eth') && value.length !== 42
+                  !value.includes('.country') && value.length !== 42
                     ? t('errors.addressLength')
                     : undefined,
                 isAddress: (value) =>
-                  !value.includes('.eth') && !ethers.utils.isAddress(value)
+                  !value.includes('.country') && !ethers.utils.isAddress(value)
                     ? t('errors.invalidAddress')
                     : undefined,
               },

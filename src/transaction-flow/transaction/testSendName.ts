@@ -24,9 +24,10 @@ const displayItems = (
     value: '0x3F45BcB2DFBdF0AD173A9DfEe3b932aa2a31CeB3',
     type: 'address',
   },
+  // CHANGE_TO_COUNTRY
   {
     label: 'name',
-    value: 'taytems.eth',
+    value: 'taytems.country',
     type: 'name',
   },
 ]

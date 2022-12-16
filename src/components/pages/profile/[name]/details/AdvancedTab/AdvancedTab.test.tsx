@@ -13,7 +13,7 @@ describe('More', () => {
   describe('TokenId', () => {
     const routerObject = {
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     }
 

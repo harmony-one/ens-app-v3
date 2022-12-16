@@ -7,9 +7,9 @@ export const getContentHashLink = (
 ) => {
   const protocol = decodedContentHash.protocolType
   const hash = decodedContentHash.decoded
-
+  // CHANGE_TO_COUNTRY
   const useEthLink =
-    name.endsWith('.eth') && network === 1 && (protocol === 'ipfs' || protocol === 'ipns')
+    name.endsWith('.country') && network === 1 && (protocol === 'ipfs' || protocol === 'ipns')
   if (useEthLink) {
     return `https://${name}.link`
   }

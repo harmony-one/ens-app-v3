@@ -29,7 +29,7 @@ const mockPopulatedTransaction = {
 const mockTransaction: GenericTransaction = {
   name: 'updateResolver',
   data: {
-    name: 'other-registrant.eth',
+    name: 'other-registrant.country',
     contract: 'registry',
     resolver: '0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41',
     oldResolver: '0x1613beB3B2C4f22Ee086B2b38C1476A3cE7f78E8',

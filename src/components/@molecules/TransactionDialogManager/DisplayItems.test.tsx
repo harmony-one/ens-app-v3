@@ -25,7 +25,7 @@ const addressItem: TransactionDisplayItem = {
 
 const nameItem: TransactionDisplayItem = {
   label: 'NameItem',
-  value: 'test.eth',
+  value: 'test.country',
   type: 'name',
 }
 
@@ -44,13 +44,13 @@ describe('DisplayItems', () => {
   it('should show an address item and primary name', () => {
     mockUsePrimary.mockReturnValue({
       loading: false,
-      name: 'test.eth',
+      name: 'test.country',
       status: 'success',
     })
     render(<DisplayItems displayItems={[addressItem]} />)
     expect(screen.getByText('transaction.itemLabel.AddressItem')).toBeVisible()
     expect(screen.getByText('0x123...67890')).toBeVisible()
-    expect(screen.getByText('test.eth')).toBeVisible()
+    expect(screen.getByText('test.country')).toBeVisible()
   })
   it('should show an address item and no primary name', () => {
     mockUsePrimary.mockReturnValue({
@@ -61,12 +61,12 @@ describe('DisplayItems', () => {
     render(<DisplayItems displayItems={[addressItem]} />)
     expect(screen.getByText('transaction.itemLabel.AddressItem')).toBeVisible()
     expect(screen.getByText('0x123...67890')).toBeVisible()
-    expect(screen.queryByText('test.eth')).not.toBeInTheDocument()
+    expect(screen.queryByText('test.country')).not.toBeInTheDocument()
   })
   it('should show a name item', () => {
     render(<DisplayItems displayItems={[nameItem]} />)
     expect(screen.getByText('transaction.itemLabel.NameItem')).toBeVisible()
-    expect(screen.getByText('test.eth')).toBeVisible()
+    expect(screen.getByText('test.country')).toBeVisible()
   })
   it('should render multiple items', () => {
     mockUsePrimary.mockReturnValue({
@@ -78,7 +78,7 @@ describe('DisplayItems', () => {
     expect(screen.getByText('transaction.itemLabel.AddressItem')).toBeVisible()
     expect(screen.getByText('0x123...67890')).toBeVisible()
     expect(screen.getByText('transaction.itemLabel.NameItem')).toBeVisible()
-    expect(screen.getByText('test.eth')).toBeVisible()
+    expect(screen.getByText('test.country')).toBeVisible()
     expect(screen.getByText('transaction.itemLabel.GenericItem')).toBeVisible()
     expect(screen.getByText('GenericValue')).toBeVisible()
   })

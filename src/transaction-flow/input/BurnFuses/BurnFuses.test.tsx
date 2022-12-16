@@ -29,7 +29,7 @@ const burnFusesProps = {
   onDismiss: () => null,
   dispatch: () => null,
   data: {
-    name: 'nick.eth',
+    name: 'nick.country',
   },
 }
 
@@ -37,7 +37,7 @@ describe('BurnFuses', () => {
   it('should render', () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({})
@@ -47,7 +47,7 @@ describe('BurnFuses', () => {
   it('should not update selected for already burned permission', () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({
@@ -60,7 +60,7 @@ describe('BurnFuses', () => {
   it('should set initial fuse data and correctly', () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({
@@ -83,7 +83,7 @@ describe('BurnFuses', () => {
   it('should allow user to select fuse to burn', () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({
@@ -96,7 +96,7 @@ describe('BurnFuses', () => {
   it('should not be able to proceed if no new fuses have been burned', () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({
@@ -108,7 +108,7 @@ describe('BurnFuses', () => {
   it('should reset inital data correctly', () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({
@@ -126,7 +126,7 @@ describe('BurnFuses', () => {
   it('should create transaction correctly', async () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({
@@ -143,7 +143,7 @@ describe('BurnFuses', () => {
         payload: [
           {
             data: {
-              name: 'nick.eth',
+              name: 'nick.country',
               permissions: [
                 'fuses.permissions.CANNOT_BURN_FUSES',
                 'fuses.permissions.CANNOT_UNWRAP',
@@ -159,7 +159,7 @@ describe('BurnFuses', () => {
   it('owner should not be able to burn PCC', () => {
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({
@@ -172,7 +172,7 @@ describe('BurnFuses', () => {
     // Also check that info message is shown
     mockUseRouter.mockReturnValue({
       query: {
-        name: 'nick.eth',
+        name: 'nick.country',
       },
     })
     mockUseGetWrapperData.mockReturnValue({

@@ -14,7 +14,7 @@ jest.mock('@app/utils/EnsProvider', () => ({
 
 describe('NameSnippetMobile', () => {
   const baseMockData = {
-    name: 'nick.eth',
+    name: 'nick.country',
     network: 1,
   }
 

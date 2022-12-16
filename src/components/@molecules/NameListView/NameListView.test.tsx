@@ -15,11 +15,12 @@ describe('NameListView', () => {
     mockTaggedNameItem.mockImplementation(mockComponent as any)
 
     const { getByText } = render(
+      // CHANGE_TO_COUNTRY
       <NameListView
         currentPage={
           [
             {
-              name: 'name.eth',
+              name: 'name.country',
               id: '0x123',
               expiryDate: '2020-01-01',
               isController: true,
@@ -30,7 +31,8 @@ describe('NameListView', () => {
         network={1}
       />,
     )
-    expect(getByText('name.eth')).toBeInTheDocument()
+    // CHANGE_TO_COUNTRY
+    expect(getByText('name.country')).toBeInTheDocument()
   })
   it('should render no results if there are no results', () => {
     const { queryByText } = render(<NameListView currentPage={[]} network={1} />)
